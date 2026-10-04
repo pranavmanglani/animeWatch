@@ -4,16 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Streaming Service</title>
+
 <style>
 * {
     box-sizing: border-box;
 }
 
-body {
+html, body {
     margin: 0;
-    background: #080b10;
-    color: #f5f7fa;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    min-height: 100%;
+    background: #080808;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
 }
 
 button,
@@ -21,9 +28,15 @@ input {
     font: inherit;
 }
 
+button {
+    cursor: pointer;
+}
+
 .hidden {
     display: none !important;
 }
+
+/* LOGIN */
 
 #loginScreen {
     min-height: 100vh;
@@ -32,68 +45,69 @@ input {
     justify-content: center;
     padding: 24px;
     background:
-        radial-gradient(circle at top, #18253b 0%, #080b10 55%);
+        radial-gradient(circle at 50% 0%, #202020 0%, #0b0b0b 45%, #050505 100%);
 }
 
 .login-box {
     width: 100%;
-    max-width: 420px;
-    padding: 38px;
-    background: rgba(18, 23, 32, 0.95);
-    border: 1px solid #293241;
+    max-width: 430px;
+    padding: 40px;
+    border: 1px solid #292929;
     border-radius: 22px;
-    box-shadow: 0 25px 80px rgba(0,0,0,.45);
+    background: rgba(17, 17, 17, 0.95);
+    box-shadow: 0 30px 100px rgba(0,0,0,.5);
 }
 
-.logo {
-    font-size: 28px;
+.login-logo {
+    font-size: 30px;
     font-weight: 800;
     margin-bottom: 8px;
 }
 
-.subtitle {
-    color: #8e9aaa;
-    margin-bottom: 28px;
+.login-subtitle {
+    color: #999;
+    margin-bottom: 30px;
 }
 
-input {
+.login-box input {
     width: 100%;
-    padding: 14px 16px;
+    padding: 15px 17px;
+    border: 1px solid #333;
     border-radius: 12px;
-    border: 1px solid #303948;
-    background: #0d1219;
-    color: white;
     outline: none;
-}
-
-input:focus {
-    border-color: #5b8cff;
-}
-
-button {
-    border: 0;
-    cursor: pointer;
-}
-
-.primary {
-    width: 100%;
-    margin-top: 14px;
-    padding: 14px;
-    border-radius: 12px;
-    background: #5b8cff;
+    background: #0b0b0b;
     color: white;
+    margin-bottom: 14px;
+}
+
+.login-box input:focus {
+    border-color: #777;
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 15px;
+    border: 0;
+    border-radius: 12px;
+    background: white;
+    color: black;
     font-weight: 700;
+    transition: .2s;
 }
 
-.primary:hover {
-    background: #719cff;
+.primary-btn:hover {
+    transform: translateY(-1px);
+    background: #ddd;
 }
 
-.error {
-    margin-top: 14px;
-    color: #ff7272;
-    min-height: 20px;
+.login-error {
+    color: #ff5d5d;
+    min-height: 22px;
+    margin-top: 12px;
+    font-size: 14px;
 }
+
+/* APP */
 
 #app {
     min-height: 100vh;
@@ -102,259 +116,326 @@ button {
 header {
     position: sticky;
     top: 0;
-    z-index: 20;
-    background: rgba(8,11,16,.92);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid #202733;
-}
-
-.nav {
-    max-width: 1400px;
-    margin: auto;
-    padding: 18px 24px;
+    z-index: 100;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 20px;
+    padding: 17px 28px;
+    background: rgba(8,8,8,.9);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #1d1d1d;
 }
 
-.brand {
-    font-size: 21px;
-    font-weight: 800;
+.logo {
+    font-size: 22px;
+    font-weight: 900;
     white-space: nowrap;
 }
 
-.search {
-    max-width: 420px;
-    margin-left: auto;
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.logout {
-    padding: 10px 15px;
+.search {
+    width: 260px;
+    padding: 10px 14px;
     border-radius: 10px;
-    background: #171d27;
-    color: #dce3ed;
+    border: 1px solid #333;
+    background: #111;
+    color: white;
+    outline: none;
 }
+
+.search:focus {
+    border-color: #666;
+}
+
+.logout-btn {
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background: #111;
+    color: white;
+}
+
+.logout-btn:hover {
+    background: #1c1c1c;
+}
+
+/* CONTENT */
 
 main {
     max-width: 1400px;
     margin: auto;
-    padding: 35px 24px 80px;
-}
-
-.page-title {
-    font-size: 34px;
-    margin: 0 0 8px;
-}
-
-.page-description {
-    color: #8e9aaa;
-    margin-bottom: 32px;
-}
-
-.section {
-    margin-top: 38px;
+    padding: 35px 28px 70px;
 }
 
 .section-title {
-    font-size: 24px;
-    margin-bottom: 18px;
+    margin: 0 0 20px;
+    font-size: 27px;
 }
 
-.grid {
+.series-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 20px;
 }
 
-.card {
-    background: #11161e;
-    border: 1px solid #242c38;
-    border-radius: 17px;
+.series-card {
     overflow: hidden;
+    border: 1px solid #242424;
+    border-radius: 16px;
+    background: #111;
+    transition: transform .2s, border-color .2s;
     cursor: pointer;
-    transition: transform .2s ease, border-color .2s ease;
 }
 
-.card:hover {
+.series-card:hover {
     transform: translateY(-4px);
-    border-color: #526a91;
+    border-color: #555;
 }
 
 .poster {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 2 / 3;
     object-fit: cover;
-    background: #181e28;
+    display: block;
+    background: #181818;
+}
+
+.poster-placeholder {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(135deg, #1b1b1b, #090909);
+    color: #666;
+    font-size: 45px;
 }
 
 .card-body {
-    padding: 17px;
+    padding: 15px;
 }
 
 .card-title {
-    font-weight: 700;
+    margin: 0;
     font-size: 17px;
+    font-weight: 700;
 }
 
 .card-description {
     margin-top: 8px;
-    color: #8994a5;
-    font-size: 14px;
+    color: #888;
+    font-size: 13px;
     line-height: 1.5;
 }
 
-.season-list {
-    display: grid;
-    gap: 12px;
+/* SEASONS */
+
+.back-btn {
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background: #111;
+    color: white;
 }
 
-.season {
-    padding: 17px 19px;
-    border-radius: 13px;
-    border: 1px solid #252e3b;
-    background: #11161e;
+.back-btn:hover {
+    background: #1c1c1c;
+}
+
+.season-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.season-card {
+    padding: 24px;
+    border: 1px solid #292929;
+    border-radius: 15px;
+    background: #111;
     cursor: pointer;
     transition: .2s;
 }
 
-.season:hover {
-    background: #171e28;
-    border-color: #526a91;
+.season-card:hover {
+    transform: translateY(-3px);
+    border-color: #555;
 }
 
-.episode-list {
-    display: grid;
-    gap: 10px;
+.season-number {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 8px;
 }
 
-.episode {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    background: #11161e;
-    border: 1px solid #252e3b;
-    border-radius: 13px;
-    cursor: pointer;
-}
-
-.episode:hover {
-    border-color: #526a91;
-    background: #171e28;
-}
-
-.episode-number {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    border-radius: 10px;
-    background: #1b2432;
-    color: #8fb1ff;
-    font-weight: 800;
-}
-
-.empty {
-    padding: 30px;
-    text-align: center;
-    color: #7f8998;
-    border: 1px dashed #303846;
-    border-radius: 15px;
-}
-
-#playerModal {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    background: rgba(0,0,0,.92);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
-}
-
-.player-box {
-    width: min(1200px, 100%);
-}
-
-.player-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.player-title {
-    font-size: 19px;
+.season-title {
+    font-size: 18px;
     font-weight: 700;
 }
 
-.close {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #202631;
-    color: white;
-    font-size: 20px;
+/* EPISODES */
+
+.episode-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-video {
+.episode-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 17px;
+    border: 1px solid #252525;
+    border-radius: 13px;
+    background: #101010;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.episode-card:hover {
+    border-color: #555;
+    background: #151515;
+}
+
+.episode-number {
+    min-width: 45px;
+    color: #777;
+    font-weight: 700;
+}
+
+.episode-title {
+    font-weight: 600;
+}
+
+/* PLAYER */
+
+.player-section {
+    margin-top: 35px;
+    display: none;
+}
+
+.player-section.active {
+    display: block;
+}
+
+.player-wrapper {
+    position: relative;
     width: 100%;
-    max-height: 78vh;
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #292929;
+}
+
+#videoPlayer {
+    width: 100%;
+    max-height: 75vh;
+    display: block;
     background: black;
-    border-radius: 12px;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.now-playing {
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .player-controls {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 12px;
+    gap: 8px;
 }
 
 .player-controls button {
-    padding: 11px 16px;
-    border-radius: 10px;
-    background: #1b2330;
+    padding: 10px 14px;
+    border: 1px solid #333;
+    border-radius: 9px;
+    background: #111;
     color: white;
 }
 
-.loading {
-    padding: 25px;
-    color: #8994a5;
+.player-controls button:hover {
+    background: #222;
 }
 
+.player-error {
+    margin-top: 12px;
+    color: #ff5d5d;
+    font-size: 14px;
+}
+
+.loading {
+    padding: 30px;
+    text-align: center;
+    color: #777;
+}
+
+.empty {
+    padding: 40px;
+    text-align: center;
+    color: #777;
+}
+
+/* MOBILE */
+
 @media (max-width: 700px) {
-    .nav {
+    header {
+        padding: 14px 16px;
         flex-wrap: wrap;
     }
 
-    .search {
-        order: 3;
+    .header-right {
         width: 100%;
-        max-width: none;
-        margin-left: 0;
+    }
+
+    .search {
+        flex: 1;
+        width: auto;
     }
 
     main {
-        padding: 25px 15px 60px;
+        padding: 25px 16px 50px;
     }
 
-    .page-title {
-        font-size: 28px;
-    }
-
-    .grid {
+    .series-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
     }
 
     .card-body {
-        padding: 12px;
+        padding: 11px;
     }
 
     .card-title {
-        font-size: 15px;
+        font-size: 14px;
+    }
+
+    .card-description {
+        display: none;
+    }
+
+    .player-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .login-box {
+        padding: 28px 22px;
     }
 }
 </style>
@@ -362,40 +443,48 @@ video {
 
 <body>
 
+<!-- LOGIN -->
+
 <section id="loginScreen">
     <div class="login-box">
-        <div class="logo">MY STREAM</div>
-        <div class="subtitle">Private video library</div>
+        <div class="login-logo">MY STREAM</div>
+        <div class="login-subtitle">
+            Enter your access key to continue.
+        </div>
 
         <input
-            id="accessKey"
+            id="accessKeyInput"
             type="password"
-            placeholder="Enter access key"
+            placeholder="Access key"
             autocomplete="off"
         >
 
-        <button class="primary" id="loginButton">
-            Enter Library
+        <button class="primary-btn" id="loginButton">
+            Enter
         </button>
 
-        <div class="error" id="loginError"></div>
+        <div class="login-error" id="loginError"></div>
     </div>
 </section>
+
+
+<!-- APP -->
 
 <div id="app" class="hidden">
 
     <header>
-        <div class="nav">
-            <div class="brand">MY STREAM</div>
+        <div class="logo">MY STREAM</div>
 
+        <div class="header-right">
             <input
-                class="search"
                 id="searchInput"
-                placeholder="Search series..."
+                class="search"
+                type="search"
+                placeholder="Search..."
                 autocomplete="off"
             >
 
-            <button class="logout" id="logoutButton">
+            <button id="logoutButton" class="logout-btn">
                 Logout
             </button>
         </div>
@@ -403,122 +492,268 @@ video {
 
     <main>
 
-        <h1 class="page-title">Your Library</h1>
+        <!-- SERIES -->
 
-        <div class="page-description">
-            Select a series to browse seasons and episodes.
-        </div>
+        <section id="seriesView">
+            <h1 class="section-title">Series</h1>
 
-        <div id="seriesSection" class="section">
-            <div class="section-title">Series</div>
-            <div id="seriesGrid" class="grid"></div>
-        </div>
+            <div id="seriesGrid" class="series-grid">
+                <div class="loading">Loading series...</div>
+            </div>
+        </section>
 
-        <div id="seasonSection" class="section hidden">
-            <div class="section-title" id="seasonTitle"></div>
-            <div id="seasonList" class="season-list"></div>
-        </div>
 
-        <div id="episodeSection" class="section hidden">
-            <div class="section-title" id="episodeTitle"></div>
+        <!-- SEASONS -->
+
+        <section id="seasonsView" class="hidden">
+
+            <button class="back-btn" id="backToSeries">
+                ← Back
+            </button>
+
+            <h1 class="section-title" id="seriesTitle"></h1>
+
+            <div id="seasonGrid" class="season-grid"></div>
+
+        </section>
+
+
+        <!-- EPISODES -->
+
+        <section id="episodesView" class="hidden">
+
+            <button class="back-btn" id="backToSeasons">
+                ← Back
+            </button>
+
+            <h1 class="section-title" id="seasonTitle"></h1>
+
             <div id="episodeList" class="episode-list"></div>
-        </div>
 
-    </main>
-</div>
+        </section>
 
-<div id="playerModal" class="hidden">
-    <div class="player-box">
 
-        <div class="player-top">
-            <div class="player-title" id="playerTitle">
-                Loading...
+        <!-- PLAYER -->
+
+        <section id="playerSection" class="player-section">
+
+            <div class="player-wrapper">
+
+                <video
+                    id="videoPlayer"
+                    controls
+                    playsinline
+                    preload="metadata"
+                ></video>
+
             </div>
 
-            <button class="close" id="closePlayer">
-                ×
-            </button>
-        </div>
+            <div class="player-info">
 
-        <video
-            id="videoPlayer"
-            controls
-            playsinline
-            preload="metadata"
-        ></video>
+                <div>
+                    <div class="now-playing" id="nowPlaying">
+                        Nothing playing
+                    </div>
 
-        <div class="player-controls">
-            <button id="previousEpisode">
-                ← Previous
-            </button>
+                    <div class="player-error" id="playerError"></div>
+                </div>
 
-            <button id="nextEpisode">
-                Next →
-            </button>
-        </div>
-    </div>
+                <div class="player-controls">
+                    <button id="previousButton">
+                        ← Previous
+                    </button>
+
+                    <button id="nextButton">
+                        Next →
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
 </div>
 
+
 <script>
+/* =========================
+   CONFIGURATION
+========================= */
+
 const SUPABASE_URL =
     "https://aqtspzdvfixxljiwkowt.supabase.co";
 
+/*
+    IMPORTANT:
+    Put your exact Supabase anon/publishable key here.
+    Get it from:
+    Supabase Dashboard
+    → Project Settings
+    → API
+*/
 const SUPABASE_ANON_KEY =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFxdHNwemR2Zml4eGxqaXdrb3d0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEwOTMzNjEsImV4cCI6MjEwNjY2OTM2MX0.SKtRygN4ott_-NFRCLlebXdcZx-ONqZWS3_2XyMvyBM";
+    "PASTE_YOUR_EXACT_SUPABASE_ANON_KEY_HERE";
 
 const STREAM_FUNCTION =
     SUPABASE_URL + "/functions/v1/stream";
 
+
+/* =========================
+   STATE
+========================= */
+
 let currentAccessKey = null;
-let seriesData = [];
+
+let allSeries = [];
+let allSeasons = [];
+let allEpisodes = [];
+
 let currentSeries = null;
 let currentSeason = null;
-let currentEpisodes = [];
+
 let currentEpisodeIndex = -1;
+let currentEpisodes = [];
 
-const loginScreen = document.getElementById("loginScreen");
-const app = document.getElementById("app");
-const accessKeyInput = document.getElementById("accessKey");
-const loginButton = document.getElementById("loginButton");
-const loginError = document.getElementById("loginError");
 
-const seriesGrid = document.getElementById("seriesGrid");
-const seasonSection = document.getElementById("seasonSection");
-const seasonTitle = document.getElementById("seasonTitle");
-const seasonList = document.getElementById("seasonList");
+/* =========================
+   ELEMENTS
+========================= */
 
-const episodeSection = document.getElementById("episodeSection");
-const episodeTitle = document.getElementById("episodeTitle");
-const episodeList = document.getElementById("episodeList");
+const loginScreen =
+    document.getElementById("loginScreen");
 
-const searchInput = document.getElementById("searchInput");
+const app =
+    document.getElementById("app");
 
-const playerModal = document.getElementById("playerModal");
-const videoPlayer = document.getElementById("videoPlayer");
-const playerTitle = document.getElementById("playerTitle");
+const accessKeyInput =
+    document.getElementById("accessKeyInput");
 
-const previousEpisode = document.getElementById("previousEpisode");
-const nextEpisode = document.getElementById("nextEpisode");
+const loginButton =
+    document.getElementById("loginButton");
 
-function escapeHTML(value) {
-    return String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+const loginError =
+    document.getElementById("loginError");
+
+const logoutButton =
+    document.getElementById("logoutButton");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const seriesView =
+    document.getElementById("seriesView");
+
+const seasonsView =
+    document.getElementById("seasonsView");
+
+const episodesView =
+    document.getElementById("episodesView");
+
+const seriesGrid =
+    document.getElementById("seriesGrid");
+
+const seasonGrid =
+    document.getElementById("seasonGrid");
+
+const episodeList =
+    document.getElementById("episodeList");
+
+const seriesTitle =
+    document.getElementById("seriesTitle");
+
+const seasonTitle =
+    document.getElementById("seasonTitle");
+
+const backToSeries =
+    document.getElementById("backToSeries");
+
+const backToSeasons =
+    document.getElementById("backToSeasons");
+
+const playerSection =
+    document.getElementById("playerSection");
+
+const videoPlayer =
+    document.getElementById("videoPlayer");
+
+const nowPlaying =
+    document.getElementById("nowPlaying");
+
+const playerError =
+    document.getElementById("playerError");
+
+const previousButton =
+    document.getElementById("previousButton");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+
+/* =========================
+   SUPABASE REQUEST
+========================= */
+
+async function supabaseFetch(path, options = {}) {
+
+    const response = await fetch(
+        SUPABASE_URL + "/rest/v1/" + path,
+        {
+            ...options,
+
+            headers: {
+                "apikey": SUPABASE_ANON_KEY,
+                "Authorization":
+                    "Bearer " + SUPABASE_ANON_KEY,
+                "Content-Type": "application/json",
+
+                ...(options.headers || {})
+            }
+        }
+    );
+
+    if (!response.ok) {
+
+        const text =
+            await response.text();
+
+        console.error(
+            "Supabase request failed:",
+            response.status,
+            text
+        );
+
+        throw new Error(
+            "Supabase request failed: " +
+            response.status
+        );
+    }
+
+    return await response.json();
 }
 
+
+/* =========================
+   ACCESS KEY
+========================= */
+
 async function validateAccessKey(key) {
+
     const response = await fetch(
-        SUPABASE_URL + "/rest/v1/rpc/validate_access_key",
+        SUPABASE_URL +
+        "/rest/v1/rpc/validate_access_key",
         {
             method: "POST",
+
             headers: {
-                apikey: SUPABASE_ANON_KEY,
-                Authorization: "Bearer " + SUPABASE_ANON_KEY,
-                "Content-Type": "application/json"
+                "apikey": SUPABASE_ANON_KEY,
+                "Authorization":
+                    "Bearer " + SUPABASE_ANON_KEY,
+                "Content-Type":
+                    "application/json"
             },
+
             body: JSON.stringify({
                 p_access_key: key
             })
@@ -526,327 +761,75 @@ async function validateAccessKey(key) {
     );
 
     if (!response.ok) {
-        throw new Error("Access-key validation failed");
-    }
 
-    return await response.json();
-}
+        const text =
+            await response.text();
 
-async function supabaseGet(path) {
-    const response = await fetch(
-        SUPABASE_URL + "/rest/v1/" + path,
-        {
-            headers: {
-                apikey: SUPABASE_ANON_KEY,
-                Authorization: "Bearer " + SUPABASE_ANON_KEY
-            }
-        }
-    );
+        console.error(
+            "Access key validation failed:",
+            response.status,
+            text
+        );
 
-    if (!response.ok) {
-        const error = await response.text();
-        console.error(error);
-        throw new Error("Database request failed");
-    }
-
-    return await response.json();
-}
-
-async function loadSeries() {
-    seriesGrid.innerHTML =
-        '<div class="loading">Loading library...</div>';
-
-    seriesData = await supabaseGet(
-        "series?select=id,title,description,poster_url&order=id.asc"
-    );
-
-    renderSeries(seriesData);
-}
-
-function renderSeries(data) {
-    seriesGrid.innerHTML = "";
-
-    if (!data.length) {
-        seriesGrid.innerHTML =
-            '<div class="empty">No series available.</div>';
-        return;
-    }
-
-    for (const series of data) {
-        const card = document.createElement("div");
-        card.className = "card";
-
-        const poster = series.poster_url
-            ? `<img class="poster" src="${escapeHTML(series.poster_url)}" alt="">`
-            : `<div class="poster"></div>`;
-
-        card.innerHTML = `
-            ${poster}
-            <div class="card-body">
-                <div class="card-title">
-                    ${escapeHTML(series.title)}
-                </div>
-                <div class="card-description">
-                    ${escapeHTML(series.description || "")}
-                </div>
-            </div>
-        `;
-
-        card.addEventListener("click", () => {
-            openSeries(series);
-        });
-
-        seriesGrid.appendChild(card);
-    }
-}
-
-async function openSeries(series) {
-    currentSeries = series;
-
-    seasonSection.classList.remove("hidden");
-    episodeSection.classList.add("hidden");
-
-    seasonTitle.textContent =
-        series.title + " — Seasons";
-
-    seasonList.innerHTML =
-        '<div class="loading">Loading seasons...</div>';
-
-    const seasons = await supabaseGet(
-        "seasons?select=id,series_id,season_number,title" +
-        "&series_id=eq." +
-        encodeURIComponent(series.id) +
-        "&order=season_number.asc"
-    );
-
-    seasonList.innerHTML = "";
-
-    if (!seasons.length) {
-        seasonList.innerHTML =
-            '<div class="empty">No seasons available.</div>';
-        return;
-    }
-
-    for (const season of seasons) {
-        const item = document.createElement("div");
-        item.className = "season";
-
-        item.innerHTML = `
-            <strong>
-                Season ${escapeHTML(season.season_number)}
-            </strong>
-            <div class="card-description">
-                ${escapeHTML(season.title || "")}
-            </div>
-        `;
-
-        item.addEventListener("click", () => {
-            openSeason(season);
-        });
-
-        seasonList.appendChild(item);
-    }
-
-    window.scrollTo({
-        top: seasonSection.offsetTop - 80,
-        behavior: "smooth"
-    });
-}
-
-async function openSeason(season) {
-    currentSeason = season;
-
-    episodeSection.classList.remove("hidden");
-
-    episodeTitle.textContent =
-        `${currentSeries.title} — ${season.title || "Season " + season.season_number}`;
-
-    episodeList.innerHTML =
-        '<div class="loading">Loading episodes...</div>';
-
-    currentEpisodes = await supabaseGet(
-        "episodes?select=id,season_id,episode_number,title" +
-        "&season_id=eq." +
-        encodeURIComponent(season.id) +
-        "&order=episode_number.asc"
-    );
-
-    episodeList.innerHTML = "";
-
-    if (!currentEpisodes.length) {
-        episodeList.innerHTML =
-            '<div class="empty">No episodes available.</div>';
-        return;
-    }
-
-    currentEpisodes.forEach((episode, index) => {
-        const item = document.createElement("div");
-        item.className = "episode";
-
-        item.innerHTML = `
-            <div class="episode-number">
-                ${escapeHTML(episode.episode_number)}
-            </div>
-
-            <div>
-                <strong>
-                    ${escapeHTML(episode.title)}
-                </strong>
-
-                <div class="card-description">
-                    Episode ${escapeHTML(episode.episode_number)}
-                </div>
-            </div>
-        `;
-
-        item.addEventListener("click", () => {
-            playEpisode(index);
-        });
-
-        episodeList.appendChild(item);
-    });
-
-    window.scrollTo({
-        top: episodeSection.offsetTop - 80,
-        behavior: "smooth"
-    });
-}
-
-async function getSignedVideoURL(episodeId) {
-    const response = await fetch(
-        STREAM_FUNCTION,
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                apikey: SUPABASE_ANON_KEY,
-                Authorization:
-                    "Bearer " + SUPABASE_ANON_KEY
-            },
-            body: JSON.stringify({
-                access_key: currentAccessKey,
-                episode_id: episodeId
-            })
-        }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
         throw new Error(
-            data.error || "Unable to authorize video"
+            "Access-key validation failed"
         );
     }
 
-    return data.url;
+    return await response.json();
 }
 
-async function playEpisode(index) {
-    if (
-        index < 0 ||
-        index >= currentEpisodes.length
-    ) {
-        return;
-    }
 
-    currentEpisodeIndex = index;
+/* =========================
+   LOGIN
+========================= */
 
-    const episode = currentEpisodes[index];
+async function login() {
 
-    playerTitle.textContent =
-        `${currentSeries.title} — ${episode.title}`;
+    const key =
+        accessKeyInput.value.trim();
 
-    playerModal.classList.remove("hidden");
-
-    videoPlayer.pause();
-    videoPlayer.removeAttribute("src");
-    videoPlayer.load();
-
-    try {
-        playerTitle.textContent =
-            `${currentSeries.title} — ${episode.title} · Authorizing...`;
-
-        const signedURL =
-            await getSignedVideoURL(episode.id);
-
-        playerTitle.textContent =
-            `${currentSeries.title} — ${episode.title}`;
-
-        videoPlayer.src = signedURL;
-        videoPlayer.load();
-
-        await videoPlayer.play();
-    } catch (error) {
-        console.error(error);
-
-        playerTitle.textContent =
-            "Unable to play this episode";
-
-        alert(error.message);
-    }
-
-    updateEpisodeButtons();
-}
-
-function updateEpisodeButtons() {
-    previousEpisode.disabled =
-        currentEpisodeIndex <= 0;
-
-    nextEpisode.disabled =
-        currentEpisodeIndex >= currentEpisodes.length - 1;
-}
-
-previousEpisode.addEventListener("click", () => {
-    if (currentEpisodeIndex > 0) {
-        playEpisode(currentEpisodeIndex - 1);
-    }
-});
-
-nextEpisode.addEventListener("click", () => {
-    if (
-        currentEpisodeIndex <
-        currentEpisodes.length - 1
-    ) {
-        playEpisode(currentEpisodeIndex + 1);
-    }
-});
-
-function closePlayer() {
-    videoPlayer.pause();
-    videoPlayer.removeAttribute("src");
-    videoPlayer.load();
-
-    playerModal.classList.add("hidden");
-}
-
-document.getElementById("closePlayer")
-    .addEventListener("click", closePlayer);
-
-playerModal.addEventListener("click", event => {
-    if (event.target === playerModal) {
-        closePlayer();
-    }
-});
-
-loginButton.addEventListener("click", async () => {
-    const key = accessKeyInput.value.trim();
+    loginError.textContent = "";
 
     if (!key) {
+
         loginError.textContent =
-            "Enter your access key.";
+            "Enter an access key.";
+
         return;
     }
 
     loginButton.disabled = true;
     loginButton.textContent = "Checking...";
-    loginError.textContent = "";
 
     try {
-        const valid = await validateAccessKey(key);
+
+        const valid =
+            await validateAccessKey(key);
+
+        console.log(
+            "Access key validation result:",
+            valid
+        );
 
         if (!valid) {
-            throw new Error("Invalid or expired access key.");
+
+            loginError.textContent =
+                "Invalid or expired access key.";
+
+            return;
         }
+
+        /*
+            IMPORTANT:
+            This is ONLY held in memory.
+
+            Nothing is stored in:
+            localStorage
+            sessionStorage
+            cookies
+            URL
+        */
 
         currentAccessKey = key;
 
@@ -855,66 +838,728 @@ loginButton.addEventListener("click", async () => {
         loginScreen.classList.add("hidden");
         app.classList.remove("hidden");
 
-        await loadSeries();
+        await loadContent();
+
     } catch (error) {
+
         console.error(error);
 
         loginError.textContent =
-            error.message || "Login failed.";
+            "Unable to verify access key.";
+
+    } finally {
+
+        loginButton.disabled = false;
+        loginButton.textContent = "Enter";
     }
+}
 
-    loginButton.disabled = false;
-    loginButton.textContent = "Enter Library";
-});
 
-accessKeyInput.addEventListener("keydown", event => {
-    if (event.key === "Enter") {
-        loginButton.click();
+/* =========================
+   LOGOUT
+========================= */
+
+function logout() {
+
+    currentAccessKey = null;
+
+    currentSeries = null;
+    currentSeason = null;
+    currentEpisodeIndex = -1;
+    currentEpisodes = [];
+
+    videoPlayer.pause();
+    videoPlayer.removeAttribute("src");
+    videoPlayer.load();
+
+    playerSection.classList.remove("active");
+
+    app.classList.add("hidden");
+    loginScreen.classList.remove("hidden");
+
+    accessKeyInput.value = "";
+    loginError.textContent = "";
+
+    showSeriesView();
+}
+
+
+/* =========================
+   LOAD CONTENT
+========================= */
+
+async function loadContent() {
+
+    seriesGrid.innerHTML =
+        '<div class="loading">Loading series...</div>';
+
+    try {
+
+        allSeries =
+            await supabaseFetch(
+                "series?select=id,title,description,poster_url&order=id.asc"
+            );
+
+        allSeasons =
+            await supabaseFetch(
+                "seasons?select=id,series_id,season_number,title&order=season_number.asc"
+            );
+
+        allEpisodes =
+            await supabaseFetch(
+                "episodes?select=id,season_id,episode_number,title,stream_url&order=episode_number.asc"
+            );
+
+        renderSeries(allSeries);
+
+    } catch (error) {
+
+        console.error(
+            "Content loading error:",
+            error
+        );
+
+        seriesGrid.innerHTML =
+            '<div class="empty">Failed to load content.</div>';
     }
-});
+}
 
-document.getElementById("logoutButton")
-    .addEventListener("click", () => {
-        currentAccessKey = null;
-        currentSeries = null;
-        currentSeason = null;
-        currentEpisodes = [];
-        currentEpisodeIndex = -1;
 
-        closePlayer();
+/* =========================
+   SERIES
+========================= */
 
-        app.classList.add("hidden");
-        loginScreen.classList.remove("hidden");
+function renderSeries(series) {
 
-        searchInput.value = "";
-        seriesGrid.innerHTML = "";
-        seasonList.innerHTML = "";
-        episodeList.innerHTML = "";
+    seriesGrid.innerHTML = "";
 
-        seasonSection.classList.add("hidden");
-        episodeSection.classList.add("hidden");
-    });
+    if (!series.length) {
 
-searchInput.addEventListener("input", () => {
-    const query =
-        searchInput.value.trim().toLowerCase();
+        seriesGrid.innerHTML =
+            '<div class="empty">No series available.</div>';
 
-    if (!query) {
-        renderSeries(seriesData);
         return;
     }
 
-    const filtered = seriesData.filter(series =>
-        String(series.title || "")
-            .toLowerCase()
-            .includes(query) ||
-        String(series.description || "")
-            .toLowerCase()
-            .includes(query)
+    for (const item of series) {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "series-card";
+
+        if (item.poster_url) {
+
+            const img =
+                document.createElement("img");
+
+            img.className = "poster";
+            img.src = item.poster_url;
+            img.alt = item.title || "Series";
+
+            img.onerror = () => {
+
+                img.remove();
+
+                const placeholder =
+                    document.createElement("div");
+
+                placeholder.className =
+                    "poster-placeholder";
+
+                placeholder.textContent = "▶";
+
+                card.prepend(placeholder);
+            };
+
+            card.appendChild(img);
+
+        } else {
+
+            const placeholder =
+                document.createElement("div");
+
+            placeholder.className =
+                "poster-placeholder";
+
+            placeholder.textContent = "▶";
+
+            card.appendChild(placeholder);
+        }
+
+        const body =
+            document.createElement("div");
+
+        body.className = "card-body";
+
+        const title =
+            document.createElement("h3");
+
+        title.className = "card-title";
+        title.textContent =
+            item.title || "Untitled";
+
+        body.appendChild(title);
+
+        if (item.description) {
+
+            const description =
+                document.createElement("div");
+
+            description.className =
+                "card-description";
+
+            description.textContent =
+                item.description;
+
+            body.appendChild(description);
+        }
+
+        card.appendChild(body);
+
+        card.addEventListener(
+            "click",
+            () => openSeries(item)
+        );
+
+        seriesGrid.appendChild(card);
+    }
+}
+
+
+function openSeries(series) {
+
+    currentSeries = series;
+
+    seriesTitle.textContent =
+        series.title || "Series";
+
+    const seasons =
+        allSeasons.filter(
+            season =>
+                Number(season.series_id) ===
+                Number(series.id)
+        );
+
+    renderSeasons(seasons);
+
+    showSeasonsView();
+}
+
+
+/* =========================
+   SEASONS
+========================= */
+
+function renderSeasons(seasons) {
+
+    seasonGrid.innerHTML = "";
+
+    if (!seasons.length) {
+
+        seasonGrid.innerHTML =
+            '<div class="empty">No seasons available.</div>';
+
+        return;
+    }
+
+    for (const season of seasons) {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "season-card";
+
+        const number =
+            document.createElement("div");
+
+        number.className =
+            "season-number";
+
+        number.textContent =
+            "Season " +
+            season.season_number;
+
+        const title =
+            document.createElement("div");
+
+        title.className =
+            "season-title";
+
+        title.textContent =
+            season.title ||
+            "Season " + season.season_number;
+
+        card.appendChild(number);
+        card.appendChild(title);
+
+        card.addEventListener(
+            "click",
+            () => openSeason(season)
+        );
+
+        seasonGrid.appendChild(card);
+    }
+}
+
+
+function openSeason(season) {
+
+    currentSeason = season;
+
+    seasonTitle.textContent =
+        season.title ||
+        "Season " + season.season_number;
+
+    currentEpisodes =
+        allEpisodes
+            .filter(
+                episode =>
+                    Number(episode.season_id) ===
+                    Number(season.id)
+            )
+            .sort(
+                (a, b) =>
+                    Number(a.episode_number) -
+                    Number(b.episode_number)
+            );
+
+    renderEpisodes(currentEpisodes);
+
+    showEpisodesView();
+}
+
+
+/* =========================
+   EPISODES
+========================= */
+
+function renderEpisodes(episodes) {
+
+    episodeList.innerHTML = "";
+
+    if (!episodes.length) {
+
+        episodeList.innerHTML =
+            '<div class="empty">No episodes available.</div>';
+
+        return;
+    }
+
+    episodes.forEach(
+        (episode, index) => {
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "episode-card";
+
+            const number =
+                document.createElement("div");
+
+            number.className =
+                "episode-number";
+
+            number.textContent =
+                String(
+                    episode.episode_number
+                ).padStart(2, "0");
+
+            const title =
+                document.createElement("div");
+
+            title.className =
+                "episode-title";
+
+            title.textContent =
+                episode.title ||
+                "Episode " +
+                episode.episode_number;
+
+            card.appendChild(number);
+            card.appendChild(title);
+
+            card.addEventListener(
+                "click",
+                () => {
+
+                    currentEpisodeIndex =
+                        index;
+
+                    playEpisode(episode);
+                }
+            );
+
+            episodeList.appendChild(card);
+        }
+    );
+}
+
+
+/* =========================
+   SIGNED BUNNY URL
+========================= */
+
+async function getSignedVideoURL(episodeId) {
+
+    if (!currentAccessKey) {
+
+        throw new Error(
+            "No access key is active."
+        );
+    }
+
+    console.log(
+        "Requesting signed URL for episode:",
+        episodeId
     );
 
-    renderSeries(filtered);
-});
+    const response =
+        await fetch(
+            STREAM_FUNCTION,
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                        "application/json",
+
+                    "apikey":
+                        SUPABASE_ANON_KEY
+                },
+
+                body: JSON.stringify({
+                    access_key:
+                        currentAccessKey,
+
+                    episode_id:
+                        episodeId
+                })
+            }
+        );
+
+    console.log(
+        "STREAM FUNCTION STATUS:",
+        response.status
+    );
+
+    const raw =
+        await response.text();
+
+    console.log(
+        "STREAM RAW RESPONSE:",
+        raw
+    );
+
+    let data;
+
+    try {
+
+        data = JSON.parse(raw);
+
+    } catch {
+
+        throw new Error(
+            "Stream function returned invalid JSON."
+        );
+    }
+
+    console.log(
+        "STREAM RESPONSE:",
+        data
+    );
+
+    console.log(
+        "SIGNED VIDEO URL:",
+        data.url
+    );
+
+    if (!response.ok) {
+
+        throw new Error(
+            data.error ||
+            "Failed to get signed video URL."
+        );
+    }
+
+    if (!data.url) {
+
+        throw new Error(
+            "Stream function returned no video URL."
+        );
+    }
+
+    return data.url;
+}
+
+
+/* =========================
+   PLAY EPISODE
+========================= */
+
+async function playEpisode(episode) {
+
+    playerError.textContent = "";
+
+    nowPlaying.textContent =
+        episode.title ||
+        "Episode " + episode.episode_number;
+
+    playerSection.classList.add("active");
+
+    try {
+
+        videoPlayer.pause();
+
+        /*
+            Remove old source before loading
+            the new signed URL.
+        */
+
+        videoPlayer.removeAttribute("src");
+        videoPlayer.load();
+
+        const signedURL =
+            await getSignedVideoURL(
+                episode.id
+            );
+
+        console.log(
+            "PLAYING SIGNED URL:",
+            signedURL
+        );
+
+        /*
+            IMPORTANT:
+            The raw stream_url is NEVER
+            assigned to the video element.
+
+            Only the temporary Bunny
+            signed URL is used.
+        */
+
+        videoPlayer.src =
+            signedURL;
+
+        videoPlayer.load();
+
+        await videoPlayer.play();
+
+    } catch (error) {
+
+        console.error(
+            "PLAY ERROR:",
+            error
+        );
+
+        playerError.textContent =
+            "Unable to play this episode: " +
+            error.message;
+    }
+}
+
+
+/* =========================
+   NEXT / PREVIOUS
+========================= */
+
+previousButton.addEventListener(
+    "click",
+    () => {
+
+        if (
+            currentEpisodeIndex <= 0
+        ) {
+            return;
+        }
+
+        currentEpisodeIndex--;
+
+        playEpisode(
+            currentEpisodes[
+                currentEpisodeIndex
+            ]
+        );
+    }
+);
+
+
+nextButton.addEventListener(
+    "click",
+    () => {
+
+        if (
+            currentEpisodeIndex < 0 ||
+            currentEpisodeIndex >=
+            currentEpisodes.length - 1
+        ) {
+            return;
+        }
+
+        currentEpisodeIndex++;
+
+        playEpisode(
+            currentEpisodes[
+                currentEpisodeIndex
+            ]
+        );
+    }
+);
+
+
+/* =========================
+   VIDEO ERROR
+========================= */
+
+videoPlayer.addEventListener(
+    "error",
+    () => {
+
+        const mediaError =
+            videoPlayer.error;
+
+        console.error(
+            "VIDEO ELEMENT ERROR:",
+            mediaError
+        );
+
+        if (mediaError) {
+
+            playerError.textContent =
+                "Video playback failed. Check the signed Bunny URL and video format.";
+        }
+    }
+);
+
+
+/* =========================
+   SEARCH
+========================= */
+
+searchInput.addEventListener(
+    "input",
+    () => {
+
+        const query =
+            searchInput.value
+                .trim()
+                .toLowerCase();
+
+        if (
+            !query &&
+            !seasonsView.classList.contains("hidden")
+        ) {
+            return;
+        }
+
+        if (
+            !query &&
+            !episodesView.classList.contains("hidden")
+        ) {
+            return;
+        }
+
+        const filtered =
+            allSeries.filter(
+                series =>
+                    String(series.title || "")
+                        .toLowerCase()
+                        .includes(query) ||
+
+                    String(series.description || "")
+                        .toLowerCase()
+                        .includes(query)
+            );
+
+        showSeriesView();
+
+        renderSeries(filtered);
+    }
+);
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showSeriesView() {
+
+    seriesView.classList.remove("hidden");
+    seasonsView.classList.add("hidden");
+    episodesView.classList.add("hidden");
+}
+
+function showSeasonsView() {
+
+    seriesView.classList.add("hidden");
+    seasonsView.classList.remove("hidden");
+    episodesView.classList.add("hidden");
+}
+
+function showEpisodesView() {
+
+    seriesView.classList.add("hidden");
+    seasonsView.classList.add("hidden");
+    episodesView.classList.remove("hidden");
+}
+
+
+backToSeries.addEventListener(
+    "click",
+    () => {
+
+        showSeriesView();
+
+        searchInput.value = "";
+
+        renderSeries(allSeries);
+    }
+);
+
+
+backToSeasons.addEventListener(
+    "click",
+    () => {
+
+        if (currentSeries) {
+            openSeries(currentSeries);
+        }
+    }
+);
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+loginButton.addEventListener(
+    "click",
+    login
+);
+
+accessKeyInput.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Enter") {
+            login();
+        }
+    }
+);
+
+logoutButton.addEventListener(
+    "click",
+    logout
+);
+
+
+/* =========================
+   START
+========================= */
+
+showSeriesView();
 </script>
 
 </body>
